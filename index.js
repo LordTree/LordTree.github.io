@@ -52,8 +52,13 @@ class Branch {
     growBranch() {
         const endpoint = this.getEndpoint();
         const parentPercent = this.length / this.maxLength;
-        const side = Math.random() < 0.5 ? 1 : -1;
-        const angle = Math.PI/2 + 1 * side;
+        let angle;
+        if (this.level === 1) {
+            const side = Math.random() < 0.5 ? 1 : -1;
+            angle = Math.PI/2 + 1 * side;
+        } else {
+            angle = Math.PI/2 - (this.angle - Math.PI/2);
+        }
         
         const branch = new Branch(endpoint, angle, this.level + 1, parentPercent);
         allBranches.push(branch);
@@ -70,7 +75,6 @@ class Branch {
 
     draw(ctx) {
         const endpoint = this.getEndpoint();
-        // ctx.globalAlpha = 1 - this.level * 0.1;
         ctx.strokeStyle = this.level == 1 ? "#775440" : "#11933a";
         ctx.lineWidth = this.thickness;
         ctx.beginPath();
@@ -107,7 +111,3 @@ function run() {
 
 
 run();
-
-
-
-
