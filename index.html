@@ -11,4 +11,10 @@
 </body>
 
 <script type="text/javascript" src="index.js"></script>
+<script type="text/javascript">
+    const currentHour = new Date().getHours();
+    if (currentHour <= 7 || currentHour >= 18) {
+        document.body.classList.add("dark");
+    }
+</script>
 </html>

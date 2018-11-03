@@ -3,6 +3,19 @@
     margin: 0;
 }
 
+body {
+    --color: #000;
+    --background-color: #fff;
+
+    color: var(--color);
+    background-color: var(--background-color);
+}
+
+body.dark {
+    --color: #fff;
+    --background-color: #000;
+}
+
 h1 {
     min-height: 100vh;
     margin: 0;
@@ -12,9 +25,13 @@ h1 {
     text-align: center;
 }
 a {
-    color: #000;
+    color: var(--color);
     text-decoration: none;
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+    text-shadow:
+        -1px -1px 0 var(--background-color),
+        1px -1px 0 var(--background-color),
+        -1px 1px 0 var(--background-color),
+        1px 1px 0 var(--background-color);
 }
 
 canvas {
